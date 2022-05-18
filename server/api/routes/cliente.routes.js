@@ -3,16 +3,16 @@ const cliente = require('../funcs/cliente');
 const clienteRouter = express.Router();
 
 
-clienteRouter.post('/', async (req, res) => {
+clienteRouter.post('/', (req, res) => {
     cliente.create(req, res);
 });
 
-clienteRouter.put('/', async (req, res) => {
+clienteRouter.put('/', (req, res) => {
     cliente.update(req, res);
 });
 
-clienteRouter.get('/', async (req, res) => {
-    cliente.read(req, res);
+clienteRouter.get('/', (req, res) => {
+    cliente.getAllClients(req, res);
 });
 
 module.exports = clienteRouter;

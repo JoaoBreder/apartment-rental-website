@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db": "cd database && node init.js",
@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
+    "jsonschema": "^1.4.1",
     "nodemon": "^2.0.16",
     "sqlite": "^4.1.1",
     "sqlite3": "^5.0.8"
