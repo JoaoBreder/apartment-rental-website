@@ -12,7 +12,7 @@ clienteRouter.put('/', (req, res) => {
 });
 
 clienteRouter.get('/', (req, res) => {
-    cliente.getAllClients(req, res);
+    cliente.get(req, res);
 });
 
 module.exports = clienteRouter;

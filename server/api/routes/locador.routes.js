@@ -12,7 +12,7 @@ locadorRouter.put('/', async (req, res) => {
 });
 
 locadorRouter.get('/', async (req, res) => {
-    locador.read(req, res);
+    locador.get(req, res);
 });
 
 module.exports = locadorRouter;

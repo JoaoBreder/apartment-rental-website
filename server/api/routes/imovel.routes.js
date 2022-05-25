@@ -12,7 +12,7 @@ imovelRouter.put('/', async (req, res) => {
 });
 
 imovelRouter.get('/', async (req, res) => {
-    imovel.read(req, res);
+    imovel.get(req, res);
 });
 
 module.exports = imovelRouter;

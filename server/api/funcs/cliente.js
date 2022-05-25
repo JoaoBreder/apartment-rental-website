@@ -1,8 +1,9 @@
 const Database = require('../../database/config');
 const schema = require('../schemas/schemas');
 
+
 exports.create = async (req, res) => {
-    const json = schema.validate(req.body, schema.customer.create);
+    const json = schema.validate(req.body, schema.cliente.create);
 
     if (!json.valid) {
         const arg = json.errors.map(err => {
@@ -19,18 +20,32 @@ exports.create = async (req, res) => {
     }
 
     try {
-        const { idCliente, nome, email, cpf, telefone_1, telefone_2 } = req.body;
         const db = await Database();
+
+        const {
+            nome,
+            email,
+            cpf,
+            telefone_1,
+            telefone_2
+        } = req.body;
 
         await db.run(`
         INSERT INTO CLIENTE
-        VALUES (${idCliente}, "${nome}", "${email}", "${cpf}", "${telefone_1}", "${telefone_2}")
+        VALUES (
+            ${idCliente}, 
+            "${nome}", 
+            "${email}", 
+            "${cpf}", 
+            "${telefone_1}", 
+            "${telefone_2}"
+        )
         `);
 
         res.status(200).send({
+            idCliente,
             code: 200,
             message: 'Cliente cadastrado com sucesso',
-            idCliente: idCliente,
             recorded: true
         });
     } catch (error) {
@@ -38,13 +53,13 @@ exports.create = async (req, res) => {
             code: 500,
             message: 'Erro ao cadastrar cliente',
             recorded: false,
-            error
+            error: error.message
         });
     }
 }
 
 exports.update = async (req, res) => {
-    const json = schema.validate(req.body, schema.customer.update);
+    const json = schema.validate(req.body, schema.cliente.update);
 
     if (!json.valid) {
         const arg = json.errors.map(err => {
@@ -61,8 +76,16 @@ exports.update = async (req, res) => {
     }
 
     try {
-        const { idCliente, nome, email, cpf, telefone_1, telefone_2 } = req.body;
         const db = await Database();
+
+        const {
+            idCliente,
+            nome,
+            email,
+            cpf,
+            telefone_1,
+            telefone_2
+        } = req.body;
 
         await db.run(`
         UPDATE CLIENTE
@@ -79,29 +102,28 @@ exports.update = async (req, res) => {
             message: 'Cliente atualizado com sucesso'
         });
     } catch (error) {
-        console.log(error);
         res.status(500).send({
             code: 500,
             message: 'Erro ao atualizar cliente',
-            error
+            error: error.message
         });
     }
 }
 
-exports.getAllClients = async (req, res) => {
+exports.get = async (req, res) => {
     try {
         const db = await Database();
-        const customers = await db.all('SELECT * FROM CLIENTE');
+        const clientes = await db.all('SELECT * FROM CLIENTE');
 
         res.status(200).send({
             code: 200,
-            customers
+            clientes
         });
     } catch (error) {
         res.status(500).send({
             code: 500,
             message: 'Erro ao buscar clientes',
-            error
+            error: error.message
         });
     }
 }
