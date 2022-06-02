@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
 
-class Home extends Component {
+class Login extends Component {
     render() {
         return (
             <div>
@@ -12,4 +12,4 @@ class Home extends Component {
     }
 }
 
-export default withRouter(Home);
+export default withRouter(Login);
