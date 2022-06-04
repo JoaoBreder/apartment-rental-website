@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Button from '../../components/button/Button';
 import locador from '../../dataManager/locador/locador';
+import history from '../../components/history/history';
+import siteStorage from '../../service/localStorage/localStorage';
 import './Login.css';
 
 
@@ -28,29 +30,31 @@ class Login extends Component {
         const { login, senha } = this.state;
 
         if (!login || !senha) {
-            console.log('Usuário não informou login ou senha');
+            alert('Usuário não informou login ou senha');
             return;
         }
 
         const res = await locador.getByLogin(login);
 
         if (!res.result) {
-            console.log(res.mensagem);
+            alert(res.mensagem);
             return;
         }
 
         const user = res.result;
 
-        if (user.SENHA !== senha) {
-            console.log('Senha incorreta, tente novamente');
+        if (user.senha !== senha) {
+            alert('Senha incorreta, tente novamente');
             return;
         }
 
-        this.handleLogin();
+        this.handleLogin(user);
     }
 
-    handleLogin() {
-        console.log('O login foi um sucesso');
+    handleLogin(user) {
+        siteStorage.set('user', JSON.stringify(user));
+        history.push('/home');
+        history.go();
     }
 
     render() {

@@ -5,6 +5,7 @@ import PublicRoute from './components/route/PublicRoute';
 
 // Pages
 import Login from './pages/login/Login';
+import Home from './pages/home/Home';
 
 class Routes extends Component {
     render() {
@@ -27,6 +28,7 @@ class Routes extends Component {
                     path='/home'
                     exact
                 >
+                    <Home />
                 </PrivateRoute>
 
 

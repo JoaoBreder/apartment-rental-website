@@ -123,8 +123,15 @@ exports.getByLogin = async (req, res) => {
             return;
         }
 
+        const locador = locadores[0];
+        const { NOME, LOGIN, SENHA } = locador;
+
         res.status(200).send({
-            result: locadores[0]
+            result: {
+                nome: NOME,
+                login: LOGIN,
+                senha: SENHA
+            }
         });
     } catch (error) {
         res.status(500).send({

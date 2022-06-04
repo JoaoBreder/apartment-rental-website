@@ -1,3 +1,6 @@
+import siteStorage from "../../service/localStorage/localStorage";
+
+
 export function getItem(key) {
     const cookies = document.cookie
         .split(';')
@@ -8,6 +11,6 @@ export function getItem(key) {
 }
 
 export function isAuthenticated() {
-    const auth = getItem('isAuthenticated') === 'true';
-    return auth;
+    const user = siteStorage.get('user');
+    return user ? true : false;
 }
