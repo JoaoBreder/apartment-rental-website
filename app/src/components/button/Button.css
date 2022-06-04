@@ -1,0 +1,22 @@
+.botao {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 16px 32px;
+    font-size: 16px;
+    background: linear-gradient(#ffbf00, #f2a50c);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+    text-transform: uppercase;
+    max-width: max-content;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(#ffb60d, #e29317);
+}

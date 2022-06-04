@@ -23,6 +23,7 @@ exports.create = async (req, res) => {
         const db = await Database();
 
         const {
+            idLocador,
             nome,
             login,
             senha
