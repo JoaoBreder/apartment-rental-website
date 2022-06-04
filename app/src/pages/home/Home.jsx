@@ -5,9 +5,11 @@ import { withRouter } from 'react-router';
 class Home extends Component {
     render() {
         return (
-            <div>
-                Tela Home.
-            </div>
+            <header>
+                <div className='titulo conteiner'>
+                    <h1>Home</h1>
+                </div>
+            </header>
         )
     }
 }
