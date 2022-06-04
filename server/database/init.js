@@ -13,6 +13,8 @@ const initDb = {
             SENHA VARCHAR(12) NOT NULL
         )`);
 
+        await db.exec(`CREATE INDEX LOGIN_INDEX ON LOCADOR (LOGIN)`);
+
         // Tabela dos Clientes
         await db.exec(`
         CREATE TABLE CLIENTE (

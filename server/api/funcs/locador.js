@@ -103,14 +103,28 @@ exports.update = async (req, res) => {
     }
 }
 
-exports.get = async (req, res) => {
+exports.getByLogin = async (req, res) => {
     try {
         const db = await Database();
-        const locadores = await db.all('SELECT * FROM LOCADOR');
+        const { login } = req.query;
+
+        const locadores = await db.all(`
+            SELECT * 
+            FROM LOCADOR 
+            WHERE LOGIN = "${login}"
+        `);
+
+        if (locadores.length === 0) {
+            res.status(400).send({
+                code: 400,
+                mensagem: 'Não existe um locador cadastro com esse login'
+            });
+
+            return;
+        }
 
         res.status(200).send({
-            code: 200,
-            locadores
+            result: locadores[0]
         });
     } catch (error) {
         res.status(500).send({

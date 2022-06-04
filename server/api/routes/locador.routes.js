@@ -11,8 +11,8 @@ locadorRouter.put('/', async (req, res) => {
     locador.update(req, res);
 });
 
-locadorRouter.get('/', async (req, res) => {
-    locador.get(req, res);
+locadorRouter.get('/getByLogin', async (req, res) => {
+    locador.getByLogin(req, res);
 });
 
 module.exports = locadorRouter;
