@@ -6,6 +6,7 @@ import PublicRoute from './components/route/PublicRoute';
 // Pages
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
+import CadastroCliente from './pages/cadastro/cliente/CadastroCliente';
 
 class Routes extends Component {
     render() {
@@ -37,6 +38,7 @@ class Routes extends Component {
                     path='/cadastrar/cliente'
                     exact
                 >
+                    <CadastroCliente />
                 </PrivateRoute>
 
                 <PrivateRoute

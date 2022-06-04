@@ -1,0 +1,150 @@
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.conteiner {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+
+}
+
+.titulo h1 {
+  color: #FFBB00;
+}
+
+.titulo {
+  position: relative;
+}
+
+.fundo-form {
+  width: 60%;
+  padding: 40px;
+  height: 350px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.form-c {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-c label {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-c input[type=text],
+input[type=email],
+input[type=password] {
+  padding: 8px;
+  width: 100%;
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sexo div {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sexo input {
+  margin-left: 20px;
+  width: 15px;
+  height: 15px;
+}
+
+.pais select {
+  padding: 8px;
+  width: 100%;
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.termos {
+  display: flex;
+  align-items: center;
+}
+
+.termos input {
+  margin-left: 20px;
+  width: 15px;
+  height: 15px;
+}
+
+.idade input {
+  padding: 8px;
+  width: 100%;
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.botao {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.titulo img {
+  width: 30px;
+  padding: 20px;
+  position: relative;
+  animation: seta 0.5s ease-in 0s infinite alternate;
+}
+
+button {
+  padding: 16px 32px;
+  font-size: 16px;
+  background: linear-gradient(#ffbf00, #f2a50c);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  text-transform: uppercase;
+  max-width: max-content;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(#ffb60d, #e29317);
+}
+
+@keyframes seta {
+  from {
+    top: 0px;
+  }
+
+  to {
+    top: 15px;
+  }
+}
+
+.temporario-pra-navegar {
+  margin-left: 20px;
+}
