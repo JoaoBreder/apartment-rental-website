@@ -12,12 +12,7 @@ function makeRequest(params, route, method) {
 
             resolve(response.data);
         } catch (error) {
-            debugger;
-            if (error.response.data.code === 400) {
-                resolve(error.response.data);
-            } else {
-                reject(error);
-            }
+            resolve(error.response.data);
         }
     })
 }
