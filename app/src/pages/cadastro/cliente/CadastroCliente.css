@@ -118,23 +118,6 @@ input[type=number]::-webkit-outer-spin-button {
   animation: seta 0.5s ease-in 0s infinite alternate;
 }
 
-button {
-  padding: 16px 32px;
-  font-size: 16px;
-  background: linear-gradient(#ffbf00, #f2a50c);
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
-  text-transform: uppercase;
-  max-width: max-content;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background: linear-gradient(#ffb60d, #e29317);
-}
-
 @keyframes seta {
   from {
     top: 0px;
@@ -143,8 +126,4 @@ button:hover {
   to {
     top: 15px;
   }
-}
-
-.temporario-pra-navegar {
-  margin-left: 20px;
 }

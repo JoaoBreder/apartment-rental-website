@@ -59,7 +59,7 @@ class Login extends Component {
 
     render() {
         return (
-            <body>
+            <div className='loginContainer'>
                 <header>
                     <div className='titulo conteiner'>
                         <h1>Login</h1>
@@ -100,7 +100,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </main>
-            </body>
+            </div>
         )
     }
 }
