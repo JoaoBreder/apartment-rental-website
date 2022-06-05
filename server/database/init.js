@@ -7,7 +7,7 @@ const initDb = {
         // Tabela dos Locadores
         await db.exec(`
         CREATE TABLE LOCADOR (
-            ID_LOCADOR INT NOT NULL PRIMARY KEY,
+            ID_LOCADOR INTEGER PRIMARY KEY AUTOINCREMENT,
             NOME VARCHAR(100) NOT NULL,
             LOGIN VARCHAR(100) NOT NULL,
             SENHA VARCHAR(12) NOT NULL
@@ -18,7 +18,7 @@ const initDb = {
         // Tabela dos Clientes
         await db.exec(`
         CREATE TABLE CLIENTE (
-            ID_CLIENTE INT NOT NULL PRIMARY KEY,
+            ID_CLIENTE INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             NOME VARCHAR(100) NOT NULL,
             EMAIL VARCHAR(100) NOT NULL,
             CPF CHAR(14) NOT NULL,
@@ -29,7 +29,7 @@ const initDb = {
         // Tabela dos Imóveis
         await db.exec(`
         CREATE TABLE IMOVEL (
-            ID_IMOVEL INT NOT NULL PRIMARY KEY,
+            ID_IMOVEL INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             LOGRADOURO VARCHAR(100) NOT NULL,
             NUMERO VARCHAR(10) NOT NULL,
             BAIRRO VARCHAR(50) NOT NULL,
@@ -42,16 +42,16 @@ const initDb = {
         // Tabela dos Pedidos
         await db.exec(`
         CREATE TABLE PEDIDO (
-            ID_PEDIDO INT NOT NULL PRIMARY KEY,
-            ID_CLIENTE INT NOT NULL REFERENCES 
+            ID_PEDIDO INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            ID_CLIENTE INTEGER NOT NULL REFERENCES 
                 CLIENTE (ID_CLIENTE),
-            ID_LOCADOR INT NOT NULL REFERENCES
+            ID_LOCADOR INTEGER NOT NULL REFERENCES
                 LOCADOR (ID_LOCADOR),
             NUMERO VARCHAR(100) NOT NULL,
             DATA DATE NOT NULL,
             INICIO_LOCACAO DATE NOT NULL,
             FIM_LOCACAO DATE NOT NULL,
-            DIAS_LOCACAO INT NOT NULL,
+            DIAS_LOCACAO INTEGER NOT NULL,
             VALOR_TOTAL NUMERIC(10, 2) NOT NULL,
             TAXA_CANCELAMENTO NUMERIC(10, 2) NOT NULL
         )`);
@@ -59,23 +59,23 @@ const initDb = {
         // Tabela das Formas de Pagamento
         await db.exec(`
         CREATE TABLE FORMA_PAGAMENTO (
-            ID_FORMA_PAGAMENTO INT NOT NULL PRIMARY KEY,
+            ID_FORMA_PAGAMENTO INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             NOME VARCHAR(100) NOT NULL
         )`);
 
         // Tabela das Palavras-Chave
         await db.exec(`
         CREATE TABLE PALAVRA_CHAVE (
-            ID_PALAVRA_CHAVE INT NOT NULL PRIMARY KEY,
+            ID_PALAVRA_CHAVE INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             PALAVRAC_CHAVE VARCHAR(100) NOT NULL
         )`);
 
         // Tabela para relacionar Forma de Pagamento e Pedido
         await db.exec(`
         CREATE TABLE FORMA_PAGAMENTO_PEDIDO (
-            ID_PEDIDO INT NOT NULL REFERENCES
+            ID_PEDIDO INTEGER NOT NULL REFERENCES
                 PEDIDO (ID_PEDIDO),
-            ID_FORMA_PAGAMENTO INT NOT NULL REFERENCES
+            ID_FORMA_PAGAMENTO INTEGER NOT NULL REFERENCES
                 FORMA_PAGAMENTO (ID_FORMA_PAGAMENTO),
             VALOR NUMERIC(10, 2) NOT NULL,
             PRIMARY KEY (ID_PEDIDO, ID_FORMA_PAGAMENTO)
@@ -84,9 +84,9 @@ const initDb = {
         // Tabela para relacionar Imóvel e Palavra Chave
         await db.exec(`
         CREATE TABLE IMOVEL_PALAVRA_CHAVE (
-            ID_IMOVEL INT NOT NULL REFERENCES
+            ID_IMOVEL INTEGER NOT NULL REFERENCES
                 IMOVEL (ID_IMOVEL),
-            ID_PALAVRA_CHAVE INT NOT NULL REFERENCES
+            ID_PALAVRA_CHAVE INTEGER NOT NULL REFERENCES
                 PALAVRA_CHAVE (ID_PALAVRA_CHAVE),
             PRIMARY KEY (ID_IMOVEL, ID_PALAVRA_CHAVE)
         )`);

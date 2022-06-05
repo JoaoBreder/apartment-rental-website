@@ -23,16 +23,19 @@ exports.create = async (req, res) => {
         const db = await Database();
 
         const {
-            idLocador,
             nome,
             login,
             senha
         } = req.body;
 
         await db.run(`
-        INSERT INTO LOCADOR
+        INSERT INTO 
+        LOCADOR (
+            NOME,
+            LOGIN,
+            SENHA
+        )
         VALUES (
-            ${idLocador}, 
             "${nome}", 
             "${login}", 
             "${senha}"
@@ -41,9 +44,7 @@ exports.create = async (req, res) => {
 
         res.status(200).send({
             code: 200,
-            message: 'Locador cadastrado com sucesso',
-            idLocador: idLocador,
-
+            message: 'Locador cadastrado com sucesso'
         });
     } catch (error) {
         res.status(500).send({
@@ -92,7 +93,8 @@ exports.update = async (req, res) => {
 
         res.status(200).send({
             code: 200,
-            message: 'Locador atualizado com sucesso'
+            message: 'Locador atualizado com sucesso',
+            recorded: true
         });
     } catch (error) {
         res.status(500).send({

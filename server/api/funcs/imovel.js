@@ -33,9 +33,17 @@ exports.create = async (req, res) => {
         } = req.body;
 
         await db.run(`
-        INSERT INTO IMOVEL
+        INSERT INTO 
+        IMOVEL (
+            LOGRADOURO,
+            NUMERO,
+            BAIRRO,
+            COMPLEMENTO,
+            DESCRICAO,
+            VALOR_DIARIA,
+            DISPONIBILIDADE
+        )
         VALUES (
-            ${idImovel}, 
             "${logradouro}", 
             "${numero}", 
             "${bairro}", 
@@ -47,7 +55,6 @@ exports.create = async (req, res) => {
         `);
 
         res.status(200).send({
-            idCliente,
             code: 200,
             message: 'Imóvel cadastrado com sucesso',
             recorded: true

@@ -31,9 +31,15 @@ exports.create = async (req, res) => {
         } = req.body;
 
         await db.run(`
-        INSERT INTO CLIENTE
+        INSERT INTO 
+        CLIENTE (
+            NOME,
+            EMAIL,
+            CPF,
+            TELEFONE_1,
+            TELEFONE_2
+        )
         VALUES (
-            ${idCliente}, 
             "${nome}", 
             "${email}", 
             "${cpf}", 
@@ -43,7 +49,6 @@ exports.create = async (req, res) => {
         `);
 
         res.status(200).send({
-            idCliente,
             code: 200,
             message: 'Cliente cadastrado com sucesso',
             recorded: true

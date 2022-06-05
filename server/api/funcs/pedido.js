@@ -35,9 +35,19 @@ exports.create = async (req, res) => {
         } = req.body;
 
         await db.run(`
-        INSERT INTO PEDIDO
+        INSERT INTO 
+        PEDIDO (
+            ID_CLIENTE,
+            ID_LOCADOR,
+            NUMERO,
+            DATA,
+            INICIO_LOCACAO,
+            FIM_LOCACAO,
+            DIAS_LOCACAO,
+            VALOR_TOTAL,
+            TAXA_CANCELAMENTO
+        )
         VALUES (
-            ${idPedido},
             ${idCliente},
             ${idLocador},
             "${numero}", 
@@ -51,7 +61,6 @@ exports.create = async (req, res) => {
         `);
 
         res.status(200).send({
-            idPedido,
             code: 200,
             message: 'Pedido cadastrado com sucesso',
             recorded: true
