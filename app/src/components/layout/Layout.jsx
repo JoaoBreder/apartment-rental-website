@@ -1,48 +1,77 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import siteStorage from '../../service/localStorage/localStorage';
+import history from '../history/history';
 import './Layout.css';
 
 
 class Layout extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleMenuClick(page) {
+        history.push(page);
+        history.go();
+    }
+
+    handleLogout() {
+        siteStorage.clear('user');
+        history.push('/login');
+        history.go();
+    }
+
     render() {
         return (
             <div>
                 <div className='cor-fundo-menu'>
                     <nav>
                         <ul className='menu'>
-                            <li className='mt-l'>
-                                <a>Home</a>
+                            <li
+                                className='mt-l'
+                                onClick={() => this.handleMenuClick('/home')}
+                            >
+                                <div>Home</div>
                             </li>
 
                             <li className='mt-l'>
-                                <a>Cadastros</a>
+                                <div>Cadastros</div>
 
                                 <ul>
-                                    <li>
-                                        <a className='cor-dentro'>Cliente</a>
+                                    <li onClick={() => this.handleMenuClick('/cadastrar/cliente')}>
+                                        <div className='cor-dentro'>Cliente</div>
                                     </li>
 
-                                    <li>
-                                        <a className='cor-dentro'>Locador</a>
+                                    <li onClick={() => this.handleMenuClick('/cadastrar/locador')}>
+                                        <div className='cor-dentro'>Locador</div>
                                     </li>
-                                    <li>
-                                        <a className='cor-dentro'>Imóvel</a>
+                                    <li onClick={() => this.handleMenuClick('/cadastrar/imovel')}>
+                                        <div className='cor-dentro'>Imóvel</div>
                                     </li>
                                 </ul>
                             </li>
 
-                            <li className='mt-l'><a>Gerenciamento </a>
+                            <li className='mt-l'><div>Gerenciamento </div>
                                 <ul>
                                     <li>
-                                        <a className='cor-dentro'>Gerenciar locadores</a>
+                                        <div className='cor-dentro'>Gerenciar locadores</div>
                                     </li>
 
                                     <li>
-                                        <a className='cor-dentro'>Gerenciar imóveis</a>
+                                        <div className='cor-dentro'>Gerenciar imóveis</div>
                                     </li>
                                 </ul>
                             </li>
-                            <li className='mt-l'><a>Logout</a></li>
+
+                            <li
+                                className='mt-l'
+                                onClick={this.handleLogout}
+                            >
+                                <div>Logout</div>
+                            </li>
                         </ul>
                     </nav>
                 </div>

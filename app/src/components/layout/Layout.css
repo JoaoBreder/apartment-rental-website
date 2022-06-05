@@ -5,18 +5,16 @@
 
 body {
     font-family: arial, helvetica, sans-serif;
-    font-size: 12px;
 }
 
 .content {
     margin: 0;
-    margin-top: 80px;
+    margin-top: 60px;
     padding: 0;
 }
 
 .menu {
     list-style: none;
-
     float: left;
 }
 
@@ -35,7 +33,7 @@ body {
 
 }
 
-.menu li a {
+.menu li div {
     text-decoration: none;
     padding: 5px 10px;
     display: block;
@@ -44,10 +42,9 @@ body {
     font-weight: 600;
 }
 
-.menu li a:hover {
-    background: rgb(163, 163, 163);
-    color: #FFBB00;
-
+.menu li div:hover {
+    color: #fff;
+    cursor: pointer;
 }
 
 
@@ -61,6 +58,7 @@ body {
     left: 0;
     background-color: #fff;
     display: none;
+    z-index: 100;
 }
 
 

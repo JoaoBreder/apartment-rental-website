@@ -7,6 +7,10 @@ class SiteStorage {
     set(name, value) {
         localStorage.setItem(name, value);
     }
+
+    clear(item) {
+        localStorage.clear(item);
+    }
 }
 
 const siteStorage = new SiteStorage();
