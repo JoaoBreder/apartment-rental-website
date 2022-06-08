@@ -44,7 +44,8 @@ exports.create = async (req, res) => {
 
         res.status(200).send({
             code: 200,
-            message: 'Locador cadastrado com sucesso'
+            message: 'Locador cadastrado com sucesso',
+            recorded: true
         });
     } catch (error) {
         res.status(500).send({

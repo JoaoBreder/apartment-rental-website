@@ -28,7 +28,6 @@ class CadastroCliente extends Component {
     }
 
     async handleSubmit() {
-        console.log(this.state);
         const {
             nome,
             email,
@@ -41,7 +40,6 @@ class CadastroCliente extends Component {
             alert('Preencha todos os campos obrigatórios');
             return;
         }
-
 
         const res = await cliente.create({
             nome,

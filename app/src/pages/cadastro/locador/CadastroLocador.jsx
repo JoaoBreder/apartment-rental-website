@@ -2,10 +2,61 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Button from '../../../components/button/Button';
 import Layout from '../../../components/layout/Layout';
+import locador from '../../../dataManager/locador/locador';
 import './CadastroLocador.css';
 
 
 class CadastroLocador extends Component {
+    state = {
+        nome: undefined,
+        login: undefined,
+        senha: undefined
+    }
+
+    constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event, index) {
+        const { value } = event.target;
+        this.setState({ [index]: value });
+    }
+
+    async handleSubmit() {
+        const {
+            nome,
+            login,
+            senha
+        } = this.state;
+
+        if (!nome || !login || !senha) {
+            alert('Preencha todos os campos');
+            return;
+        }
+
+        const res = await locador.create({
+            nome,
+            login,
+            senha
+        });
+
+        if (!res.recorded) {
+            alert(res.message);
+            return;
+        }
+
+        alert(res.message);
+
+        this.setState({
+            nome: undefined,
+            login: undefined,
+            senha: undefined
+        });
+    }
+
     render() {
         return (
             <Layout>
@@ -23,23 +74,38 @@ class CadastroLocador extends Component {
                                     <form className='form-c'>
                                         <div>
                                             <label>Nome Completo</label>
-                                            <input type='text' placeholder='Nome' />
+                                            <input
+                                                type='text'
+                                                placeholder='Nome'
+                                                value={this.state.nome}
+                                                onChange={(event) => this.handleChange(event, 'nome')}
+                                            />
                                         </div>
 
                                         <div>
                                             <label>Login</label>
-                                            <input type='text' placeholder='Login' />
+                                            <input
+                                                type='text'
+                                                placeholder='Login'
+                                                value={this.state.login}
+                                                onChange={(event) => this.handleChange(event, 'login')}
+                                            />
                                         </div>
 
                                         <div>
                                             <label>Senha</label>
-                                            <input type='password' placeholder='Senha' />
+                                            <input
+                                                type='password'
+                                                placeholder='Senha'
+                                                value={this.state.senha}
+                                                onChange={(event) => this.handleChange(event, 'senha')}
+                                            />
                                         </div>
                                     </form>
 
                                     <Button
                                         title='Cadastrar'
-                                        onClick={() => console.log('Cadastrando locador...')}
+                                        onClick={this.handleSubmit}
                                     />
                                 </div>
                             </div>

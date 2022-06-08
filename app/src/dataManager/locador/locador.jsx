@@ -2,6 +2,16 @@ import API from '../../service/api/api';
 const api = new API();
 
 class Locador {
+    async create(locador) {
+        const route = '/locador';
+
+        const response = await api.post({
+            ...locador
+        }, route);
+
+        return response;
+    }
+
     async getByLogin(login) {
         const route = '/locador/getByLogin';
 
