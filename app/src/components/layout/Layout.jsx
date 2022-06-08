@@ -6,6 +6,10 @@ import './Layout.css';
 
 
 class Layout extends Component {
+    state = {
+        userType: siteStorage.get('user-type')
+    }
+
     constructor(props) {
         super(props);
 
@@ -45,26 +49,33 @@ class Layout extends Component {
                                         <div className='cor-dentro'>Cliente</div>
                                     </li>
 
-                                    <li onClick={() => this.handleMenuClick('/cadastrar/locador')}>
-                                        <div className='cor-dentro'>Locador</div>
-                                    </li>
-                                    <li onClick={() => this.handleMenuClick('/cadastrar/imovel')}>
-                                        <div className='cor-dentro'>Imóvel</div>
-                                    </li>
+                                    {this.state.userType === 'Gerente' && (
+                                        <li onClick={() => this.handleMenuClick('/cadastrar/locador')}>
+                                            <div className='cor-dentro'>Locador</div>
+                                        </li>
+                                    )}
+
+                                    {this.state.userType === 'Gerente' && (
+                                        <li onClick={() => this.handleMenuClick('/cadastrar/imovel')}>
+                                            <div className='cor-dentro'>Imóvel</div>
+                                        </li>
+                                    )}
                                 </ul>
                             </li>
 
-                            <li className='mt-l'><div>Gerenciamento </div>
-                                <ul>
-                                    <li>
-                                        <div className='cor-dentro'>Gerenciar locadores</div>
-                                    </li>
+                            {this.state.userType === 'Gerente' && (
+                                <li className='mt-l'><div>Gerenciamento </div>
+                                    <ul>
+                                        <li>
+                                            <div className='cor-dentro'>Gerenciar locadores</div>
+                                        </li>
 
-                                    <li>
-                                        <div className='cor-dentro'>Gerenciar imóveis</div>
-                                    </li>
-                                </ul>
-                            </li>
+                                        <li>
+                                            <div className='cor-dentro'>Gerenciar imóveis</div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            )}
 
                             <li
                                 className='mt-l'

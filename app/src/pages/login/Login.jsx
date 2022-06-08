@@ -53,6 +53,8 @@ class Login extends Component {
 
     handleLogin(user) {
         siteStorage.set('user', JSON.stringify(user));
+        siteStorage.set('user-type', 'Locador');
+
         history.push('/home');
         history.go();
     }

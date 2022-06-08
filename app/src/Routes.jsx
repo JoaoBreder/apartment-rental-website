@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter, Switch } from 'react-router';
-import PrivateRoute from './components/route/PrivateRoute';
 import PublicRoute from './components/route/PublicRoute';
+import PrivateRoute from './components/route/PrivateRoute';
+import PrivateRouteGerente from './components/route/PrivateRouteGerente';
 
 // Pages
 import Login from './pages/login/Login';
@@ -43,19 +44,19 @@ class Routes extends Component {
                     <CadastroCliente />
                 </PrivateRoute>
 
-                <PrivateRoute
+                <PrivateRouteGerente
                     path='/cadastrar/locador'
                     exact
                 >
                     <CadastroLocador />
-                </PrivateRoute>
+                </PrivateRouteGerente>
 
-                <PrivateRoute
+                <PrivateRouteGerente
                     path='/cadastrar/imovel'
                     exact
                 >
                     <CadastroImovel />
-                </PrivateRoute>
+                </PrivateRouteGerente>
 
 
                 {/* Others Pages */}
