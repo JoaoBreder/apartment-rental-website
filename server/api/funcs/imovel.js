@@ -29,7 +29,7 @@ exports.create = async (req, res) => {
             complemento,
             descricao,
             valorDiaria,
-            disponibilidade
+            palavrasChave
         } = req.body;
 
         await db.run(`
@@ -49,10 +49,12 @@ exports.create = async (req, res) => {
             "${bairro}", 
             "${complemento}", 
             "${descricao}",
-            ${valorDiaria},
-            "${disponibilidade}"
+            ${Number(valorDiaria)},
+            "D"
         )
         `);
+
+        console.log(palavrasChave);
 
         res.status(200).send({
             code: 200,

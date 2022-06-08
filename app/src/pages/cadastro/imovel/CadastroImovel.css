@@ -47,7 +47,8 @@ main {
 
 .form-c input[type=text],
 input[type=email],
-input[type=password] {
+input[type=password],
+input[type=number] {
   padding: 8px;
   width: 100%;
   background-color: #f7f7f7;

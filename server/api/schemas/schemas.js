@@ -52,7 +52,7 @@ exports.imovel = {
             'complemento',
             'descricao',
             'valorDiaria',
-            'disponibilidade'
+            'palavrasChave'
         ]
     },
     update: {
@@ -64,7 +64,8 @@ exports.imovel = {
             'complemento',
             'descricao',
             'valorDiaria',
-            'disponibilidade'
+            'disponibilidade',
+            'palavrasChave'
         ]
     }
 }
