@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import siteStorage from '../../service/localStorage/localStorage';
+import { getUserType } from '../functions/functions';
+import siteStorage from '../localStorage/localStorage';
 import history from '../history/history';
 import './Layout.css';
 
 
 class Layout extends Component {
     state = {
-        userType: siteStorage.get('user-type')
+        userType: getUserType()
     }
 
     constructor(props) {

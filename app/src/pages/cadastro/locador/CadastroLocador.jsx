@@ -9,6 +9,7 @@ import './CadastroLocador.css';
 class CadastroLocador extends Component {
     state = {
         nome: undefined,
+        tipo: 'L',
         login: undefined,
         senha: undefined
     }
@@ -28,17 +29,19 @@ class CadastroLocador extends Component {
     async handleSubmit() {
         const {
             nome,
+            tipo,
             login,
             senha
         } = this.state;
 
-        if (!nome || !login || !senha) {
+        if (!nome || !tipo || !login || !senha) {
             alert('Preencha todos os campos');
             return;
         }
 
         const res = await locador.create({
             nome,
+            tipo,
             login,
             senha
         });
@@ -52,6 +55,7 @@ class CadastroLocador extends Component {
 
         this.setState({
             nome: undefined,
+            tipo: 'L',
             login: undefined,
             senha: undefined
         });
@@ -80,6 +84,19 @@ class CadastroLocador extends Component {
                                                 value={this.state.nome}
                                                 onChange={(event) => this.handleChange(event, 'nome')}
                                             />
+                                        </div>
+
+                                        <div>
+                                            <label>Tipo</label>
+                                            <select onChange={(event) => this.handleChange(event, 'tipo')}>
+                                                <option value='L'>
+                                                    Locador
+                                                </option>
+
+                                                <option value='G'>
+                                                    Gerente
+                                                </option>
+                                            </select>
                                         </div>
 
                                         <div>

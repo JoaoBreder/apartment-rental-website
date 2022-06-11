@@ -24,6 +24,7 @@ exports.create = async (req, res) => {
 
         const {
             nome,
+            tipo,
             login,
             senha
         } = req.body;
@@ -32,11 +33,13 @@ exports.create = async (req, res) => {
         INSERT INTO 
         LOCADOR (
             NOME,
+            TIPO,
             LOGIN,
             SENHA
         )
         VALUES (
-            "${nome}", 
+            "${nome}",
+            "${tipo}",
             "${login}", 
             "${senha}"
         )
@@ -80,6 +83,7 @@ exports.update = async (req, res) => {
         const {
             idLocador,
             nome,
+            tipo,
             login,
             senha
         } = req.body;
@@ -87,6 +91,7 @@ exports.update = async (req, res) => {
         await db.run(`
         UPDATE LOCADOR
         SET NOME = "${nome}",
+            TIPO = "${tipo}",
             LOGIN = "${login}",
             SENHA = "${senha}"
         WHERE ID_LOCADOR = ${idLocador}
@@ -127,11 +132,12 @@ exports.getByLogin = async (req, res) => {
         }
 
         const locador = locadores[0];
-        const { NOME, LOGIN, SENHA } = locador;
+        const { NOME, TIPO, LOGIN, SENHA } = locador;
 
         res.status(200).send({
             result: {
                 nome: NOME,
+                tipo: TIPO,
                 login: LOGIN,
                 senha: SENHA
             }

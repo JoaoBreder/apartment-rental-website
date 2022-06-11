@@ -3,8 +3,9 @@ import { withRouter } from 'react-router';
 import Button from '../../components/button/Button';
 import locador from '../../dataManager/locador/locador';
 import history from '../../components/history/history';
-import siteStorage from '../../service/localStorage/localStorage';
+import siteStorage from '../../components/localStorage/localStorage';
 import './Login.css';
+import { saveUser } from '../../components/functions/functions';
 
 
 class Login extends Component {
@@ -52,8 +53,7 @@ class Login extends Component {
     }
 
     handleLogin(user) {
-        siteStorage.set('user', JSON.stringify(user));
-        siteStorage.set('user-type', 'Locador');
+        saveUser(user);
 
         history.push('/home');
         history.go();

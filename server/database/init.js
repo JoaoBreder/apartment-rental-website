@@ -9,6 +9,7 @@ const initDb = {
         CREATE TABLE LOCADOR (
             ID_LOCADOR INTEGER PRIMARY KEY AUTOINCREMENT,
             NOME VARCHAR(100) NOT NULL,
+            TIPO CHAR(1) DEFAULT "L",
             LOGIN VARCHAR(100) NOT NULL,
             SENHA VARCHAR(12) NOT NULL
         )`);
@@ -36,7 +37,7 @@ const initDb = {
             COMPLEMENTO VARCHAR(100) NOT NULL,
             DESCRICAO VARCHAR(250) NOT NULL,
             VALOR_DIARIA NUMERIC(10, 2) NOT NULL,
-            DISPONIBILIDADE CHAR(1) NOT NULL DEFAULT "D"
+            DISPONIBILIDADE CHAR(1) DEFAULT "D"
         )`);
 
         // Tabela dos Pedidos

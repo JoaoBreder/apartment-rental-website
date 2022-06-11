@@ -1,13 +1,13 @@
-import siteStorage from "../../service/localStorage/localStorage";
+import siteStorage from "../localStorage/localStorage";
 
 
-export function getItem(key) {
-    const cookies = document.cookie
-        .split(';')
-        .map(cookie => cookie.split('='))
-        .reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
+export function saveUser(user) {
+    siteStorage.set('user', JSON.stringify(user));
+}
 
-    return cookies[key];
+export function getUserType() {
+    const user = siteStorage.get('user');
+    return user.tipo === 'L' ? 'Locador' : 'Gerente';
 }
 
 export function isAuthenticated() {

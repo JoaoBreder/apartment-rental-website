@@ -5,6 +5,7 @@ exports.locador = {
     create: {
         'required': [
             'nome',
+            'tipo',
             'login',
             'senha'
         ]
@@ -13,6 +14,7 @@ exports.locador = {
         'required': [
             'idLocador',
             'nome',
+            'tipo',
             'login',
             'senha'
         ]

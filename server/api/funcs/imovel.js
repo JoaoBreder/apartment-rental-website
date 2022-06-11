@@ -49,8 +49,7 @@ exports.create = async (req, res) => {
             "${bairro}", 
             "${complemento}", 
             "${descricao}",
-            ${Number(valorDiaria)},
-            "D"
+            ${Number(valorDiaria)}
         )
         `);
 

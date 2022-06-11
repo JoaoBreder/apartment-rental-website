@@ -1,6 +1,5 @@
 import { Route, Redirect } from 'react-router';
-import { isAuthenticated } from '../functions/functions';
-import siteStorage from '../../service/localStorage/localStorage';
+import { getUserType, isAuthenticated } from '../functions/functions';
 
 
 function PrivateRouteGerente({ children, ...rest }) {
@@ -9,7 +8,7 @@ function PrivateRouteGerente({ children, ...rest }) {
             {...rest}
             render={
                 ({ location }) => (
-                    (isAuthenticated() && (siteStorage.get('user-type') === 'Gerente')) ?
+                    (isAuthenticated() && (getUserType() === 'Gerente')) ?
                         (
                             children
                         ) :
