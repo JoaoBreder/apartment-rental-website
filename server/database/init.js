@@ -27,6 +27,9 @@ const initDb = {
             TELEFONE_2 CHAR(15)
         )`);
 
+        await db.exec(`CREATE INDEX NOME_INDEX ON CLIENTE (NOME)`);
+        await db.exec(`CREATE INDEX CPF_INDEX ON CLIENTE (CPF)`);
+
         // Tabela dos Imóveis
         await db.exec(`
         CREATE TABLE IMOVEL (
@@ -39,6 +42,10 @@ const initDb = {
             VALOR_DIARIA NUMERIC(10, 2) NOT NULL,
             DISPONIBILIDADE CHAR(1) DEFAULT "D"
         )`);
+
+        await db.exec(`CREATE INDEX BAIRRO_INDEX ON IMOVEL (BAIRRO)`);
+        await db.exec(`CREATE INDEX VALOR_DIARIA_INDEX ON IMOVEL (VALOR_DIARIA)`);
+        await db.exec(`CREATE INDEX DISPONIBILIDADE_INDEX ON IMOVEL (DISPONIBILIDADE)`);
 
         // Tabela dos Pedidos
         await db.exec(`
