@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Button from '../../../components/button/Button';
+import history from '../../../components/history/history';
 import Layout from '../../../components/layout/Layout';
 import locador from '../../../dataManager/locador/locador';
 import './CadastroLocador.css';
@@ -11,7 +12,8 @@ class CadastroLocador extends Component {
         nome: undefined,
         tipo: 'L',
         login: undefined,
-        senha: undefined
+        senha: undefined,
+        confirmarSenha: undefined
     }
 
     constructor(props) {
@@ -31,11 +33,17 @@ class CadastroLocador extends Component {
             nome,
             tipo,
             login,
-            senha
+            senha,
+            confirmarSenha
         } = this.state;
 
         if (!nome || !tipo || !login || !senha) {
             alert('Preencha todos os campos');
+            return;
+        }
+
+        if (senha !== confirmarSenha) {
+            alert('Senhas informadas são diferentes, por favor digite novamente');
             return;
         }
 
@@ -53,12 +61,8 @@ class CadastroLocador extends Component {
 
         alert(res.message);
 
-        this.setState({
-            nome: undefined,
-            tipo: 'L',
-            login: undefined,
-            senha: undefined
-        });
+        history.push('/cadastrar/locador');
+        history.go();
     }
 
     render() {
@@ -113,9 +117,21 @@ class CadastroLocador extends Component {
                                             <label>Senha</label>
                                             <input
                                                 type='password'
+                                                maxLength={12}
                                                 placeholder='Senha'
                                                 value={this.state.senha}
                                                 onChange={(event) => this.handleChange(event, 'senha')}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label>Confirmar Senha</label>
+                                            <input
+                                                type='password'
+                                                maxLength={12}
+                                                placeholder='Confirmar Senha'
+                                                value={this.state.confirmarSenha}
+                                                onChange={(event) => this.handleChange(event, 'confirmarSenha')}
                                             />
                                         </div>
                                     </form>

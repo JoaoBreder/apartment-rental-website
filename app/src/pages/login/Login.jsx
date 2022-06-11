@@ -3,7 +3,6 @@ import { withRouter } from 'react-router';
 import Button from '../../components/button/Button';
 import locador from '../../dataManager/locador/locador';
 import history from '../../components/history/history';
-import siteStorage from '../../components/localStorage/localStorage';
 import './Login.css';
 import { saveUser } from '../../components/functions/functions';
 

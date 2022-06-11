@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Button from '../../../components/button/Button';
+import history from '../../../components/history/history';
+import CpfInput from '../../../components/inputMask/CpfInput';
+import PhoneInput from '../../../components/inputMask/PhoneInput';
 import Layout from '../../../components/layout/Layout';
 import cliente from '../../../dataManager/cliente/cliente';
 import './CadastroCliente.css';
@@ -56,13 +59,8 @@ class CadastroCliente extends Component {
 
         alert(res.message);
 
-        this.setState({
-            nome: undefined,
-            email: undefined,
-            cpf: undefined,
-            telefone_1: undefined,
-            telefone_2: undefined
-        });
+        history.push('/cadastrar/cliente');
+        history.go();
     }
 
     render() {
@@ -102,7 +100,7 @@ class CadastroCliente extends Component {
 
                                         <div>
                                             <label>CPF</label>
-                                            <input
+                                            <CpfInput
                                                 type='text'
                                                 placeholder='xxx.xxx.xxx-xx'
                                                 value={this.state.cpf}
@@ -112,7 +110,7 @@ class CadastroCliente extends Component {
 
                                         <div>
                                             <label>Telefone 1</label>
-                                            <input
+                                            <PhoneInput
                                                 type='text'
                                                 placeholder='(xx) xxxxx-xxxx'
                                                 value={this.state.telefone_1}
@@ -122,7 +120,7 @@ class CadastroCliente extends Component {
 
                                         <div>
                                             <label>Telefone 2</label>
-                                            <input
+                                            <PhoneInput
                                                 type='text'
                                                 placeholder='(xx) xxxxx-xxxx'
                                                 value={this.state.telefone_2}

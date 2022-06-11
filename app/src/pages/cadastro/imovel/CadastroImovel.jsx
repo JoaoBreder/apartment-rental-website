@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Button from '../../../components/button/Button';
+import history from '../../../components/history/history';
+import PriceInput from '../../../components/inputMask/PriceInput';
 import Layout from '../../../components/layout/Layout';
 import imovel from '../../../dataManager/imovel/imovel';
 import './CadastroImovel.css';
@@ -56,7 +58,7 @@ class CadastroImovel extends Component {
             bairro,
             complemento,
             descricao,
-            valorDiaria: Number(valorDiaria),
+            valorDiaria: Number(valorDiaria.split('R$ ')[1]),
             palavrasChave: palavrasChaveArray
         });
 
@@ -67,14 +69,8 @@ class CadastroImovel extends Component {
 
         alert(res.message);
 
-        this.setState({
-            logradouroNumero: undefined,
-            bairro: undefined,
-            complemento: undefined,
-            valorDiaria: undefined,
-            descricao: undefined,
-            palavrasChave: undefined
-        });
+        history.push('/cadastrar/imovel');
+        history.go();
     }
 
     render() {
@@ -124,8 +120,8 @@ class CadastroImovel extends Component {
 
                                         <div>
                                             <label>Valor Diária</label>
-                                            <input
-                                                type='number'
+                                            <PriceInput
+                                                type='text'
                                                 placeholder='Valor Diária'
                                                 value={this.state.valorDiaria}
                                                 onChange={(event) => this.handleChange(event, 'valorDiaria')}
