@@ -67,11 +67,15 @@ class Layout extends Component {
                             {this.state.userType === 'Gerente' && (
                                 <li className='mt-l'><div>Gerenciamento </div>
                                     <ul>
-                                        <li>
+                                        <li onClick={() => this.handleMenuClick('/gerenciamento/cliente')}>
+                                            <div className='cor-dentro'>Gerenciar clientes</div>
+                                        </li>
+
+                                        <li onClick={() => this.handleMenuClick('/gerenciamento/locador')}>
                                             <div className='cor-dentro'>Gerenciar locadores</div>
                                         </li>
 
-                                        <li>
+                                        <li onClick={() => this.handleMenuClick('/gerenciamento/imovel')}>
                                             <div className='cor-dentro'>Gerenciar imóveis</div>
                                         </li>
                                     </ul>

@@ -58,6 +58,25 @@ class Routes extends Component {
                     <CadastroImovel />
                 </PrivateRouteGerente>
 
+                {/* Update Pages */}
+                <PrivateRouteGerente
+                    path='/gerenciamento/cliente'
+                    exact
+                >
+                </PrivateRouteGerente>
+
+                <PrivateRouteGerente
+                    path='/gerenciamento/locador'
+                    exact
+                >
+                </PrivateRouteGerente>
+
+                <PrivateRouteGerente
+                    path='/gerenciamento/imovel'
+                    exact
+                >
+                </PrivateRouteGerente>
+
 
                 {/* Others Pages */}
                 <PrivateRoute
