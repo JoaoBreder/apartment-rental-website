@@ -12,7 +12,7 @@ pedidoRouter.put('/', async (req, res) => {
 });
 
 pedidoRouter.get('/', async (req, res) => {
-    pedido.read(req, res);
+    pedido.get(req, res);
 });
 
 module.exports = pedidoRouter;

@@ -54,7 +54,7 @@ exports.create = async (req, res) => {
             "${data}", 
             "${inicioLocacao}", 
             "${fimLocacao}", 
-            "${diasLocacao}",
+            ${diasLocacao},
             ${valorTotal},
             ${taxaCancelamento}
         )

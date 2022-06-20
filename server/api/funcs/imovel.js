@@ -40,8 +40,7 @@ exports.create = async (req, res) => {
             BAIRRO,
             COMPLEMENTO,
             DESCRICAO,
-            VALOR_DIARIA,
-            DISPONIBILIDADE
+            VALOR_DIARIA
         )
         VALUES (
             "${logradouro}", 
@@ -109,7 +108,7 @@ exports.update = async (req, res) => {
             COMPLEMENTO = "${complemento}",
             DESCRICAO = "${descricao}",
             VALOR_DIARIA = ${valorDiaria},
-            DISPONIBILIDADE = ${disponibilidade}
+            DISPONIBILIDADE = "${disponibilidade}"
         WHERE ID_IMOVEL = ${idImovel}
         `);
 
